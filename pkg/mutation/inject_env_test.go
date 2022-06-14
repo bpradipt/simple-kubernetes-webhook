@@ -18,7 +18,7 @@ func TestInjectEnvMutate(t *testing.T) {
 				Name: "test",
 				Env: []corev1.EnvVar{
 					{
-						Name:  "KUBE",
+						Name:  "peer-pods",
 						Value: "true",
 					},
 				},
@@ -27,7 +27,7 @@ func TestInjectEnvMutate(t *testing.T) {
 				Name: "inittest",
 				Env: []corev1.EnvVar{
 					{
-						Name:  "KUBE",
+						Name:  "peer-pods",
 						Value: "true",
 					},
 				},

@@ -53,21 +53,24 @@ func pod() *corev1.Pod {
 }
 
 func patch() string {
-	patch := `[
-		{"op":"add","path":"/spec/containers/0/env","value":[
-			{"name":"KUBE","value":"true"}
-		]},
-		{"op":"add","path":"/spec/tolerations","value":[
-			{"effect":"NoSchedule","key":"acme.com/lifespan-remaining","operator":"Equal","value":"14"},
-			{"effect":"NoSchedule","key":"acme.com/lifespan-remaining","operator":"Equal","value":"13"},
-			{"effect":"NoSchedule","key":"acme.com/lifespan-remaining","operator":"Equal","value":"12"},
-			{"effect":"NoSchedule","key":"acme.com/lifespan-remaining","operator":"Equal","value":"11"},
-			{"effect":"NoSchedule","key":"acme.com/lifespan-remaining","operator":"Equal","value":"10"},
-			{"effect":"NoSchedule","key":"acme.com/lifespan-remaining","operator":"Equal","value":"9"},
-			{"effect":"NoSchedule","key":"acme.com/lifespan-remaining","operator":"Equal","value":"8"},
-			{"effect":"NoSchedule","key":"acme.com/lifespan-remaining","operator":"Equal","value":"7"}
-		]}
-]`
+	/*
+			patch := `[
+				{"op":"add","path":"/spec/containers/0/env","value":[
+					{"name":"KUBE","value":"true"}
+				]},
+				{"op":"add","path":"/spec/tolerations","value":[
+					{"effect":"NoSchedule","key":"acme.com/lifespan-remaining","operator":"Equal","value":"14"},
+					{"effect":"NoSchedule","key":"acme.com/lifespan-remaining","operator":"Equal","value":"13"},
+					{"effect":"NoSchedule","key":"acme.com/lifespan-remaining","operator":"Equal","value":"12"},
+					{"effect":"NoSchedule","key":"acme.com/lifespan-remaining","operator":"Equal","value":"11"},
+					{"effect":"NoSchedule","key":"acme.com/lifespan-remaining","operator":"Equal","value":"10"},
+					{"effect":"NoSchedule","key":"acme.com/lifespan-remaining","operator":"Equal","value":"9"},
+					{"effect":"NoSchedule","key":"acme.com/lifespan-remaining","operator":"Equal","value":"8"},
+					{"effect":"NoSchedule","key":"acme.com/lifespan-remaining","operator":"Equal","value":"7"}
+				]}
+		]`
+	*/
+	patch := `[{"op":"add","path":"/metadata/annotations","value":{"kata.peerpods.io/vmcpu":"1000","kata.peerpods.io/vmmem":"2097152"}}]`
 
 	patch = strings.ReplaceAll(patch, "\n", "")
 	patch = strings.ReplaceAll(patch, "\t", "")

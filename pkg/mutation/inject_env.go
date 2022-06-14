@@ -25,7 +25,7 @@ func (se injectEnv) Mutate(pod *corev1.Pod) (*corev1.Pod, error) {
 
 	// build out env var slice
 	envVars := []corev1.EnvVar{{
-		Name:  "KUBE",
+		Name:  "peer-pods",
 		Value: "true",
 	}}
 
